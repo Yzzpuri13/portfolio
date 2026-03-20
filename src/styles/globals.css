@@ -1,0 +1,287 @@
+/* === DESIGN TOKENS === */
+:root {
+  /* Dark (Hero + Footer) */
+  --dark-bg: #0A0A0A;
+  --dark-text: #F5F5F5;
+  --dark-muted: #666666;
+  --dark-subtle: #333333;
+  --dark-border: #222222;
+
+  /* Light (Body sections) */
+  --light-bg: #FAFAFA;
+  --light-card: #FFFFFF;
+  --light-text: #1A1A1A;
+  --light-muted: #666666;
+  --light-border: #E5E5E5;
+
+  /* Accent — Bright Red (matching good-fella.com) */
+  --accent: #E50914;
+  --accent-hover: #C1070F;
+  --accent-glow: rgba(229, 9, 20, 0.15);
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows (for light sections) */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* === RESET === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* === SECTION LABEL (monospace) === */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+/* === SECTION HEADING === */
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+/* === LIGHT SECTION === */
+.section-light {
+  background: var(--light-bg);
+  color: var(--light-text);
+  padding: 100px 0;
+}
+
+.section-light .section-heading {
+  color: var(--light-text);
+}
+
+/* === DARK SECTION === */
+.section-dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  padding: 100px 0;
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 48px;
+  }
+}
+
+/* === GOOD FELLA BUTTON === */
+.gf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.gf-btn-text {
+  padding: 14px 24px;
+  transition: color 0.4s ease;
+}
+
+.gf-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  color: white;
+  font-size: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.gf-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.gf-btn:hover .gf-btn-text {
+  color: white;
+}
+
+.gf-btn:hover .gf-btn-icon {
+  transform: rotate(45deg);
+}
+
+/* Light variant */
+.gf-btn-light {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* === TEXT LINK === */
+.text-link {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--dark-muted);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+.text-link:hover {
+  color: var(--dark-text);
+}
+
+.text-link-arrow {
+  transition: transform 0.3s ease;
+}
+
+.text-link:hover .text-link-arrow {
+  transform: translateX(4px);
+}
+
+/* === SKILL PILL === */
+.skill-pill {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: var(--radius-full);
+  background: #F0F0F0;
+  color: #333;
+  border: 1px solid var(--light-border);
+  font-family: var(--font-body);
+}
+
+.skill-pill-exploring {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px dashed var(--accent);
+}
+
+/* === CARD === */
+.card {
+  background: var(--light-card);
+  border: 1px solid var(--light-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
