@@ -68,7 +68,7 @@ export default function Hero() {
             <GoodFellaButton onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               SEE MY WORK
             </GoodFellaButton>
-            <a href="#" className="text-link" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            <a href="/Yeshu_Puri_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-link" style={{ color: 'rgba(255,255,255,0.5)' }}>
               View my resume <span className="text-link-arrow">→</span>
             </a>
           </motion.div>
