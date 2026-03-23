@@ -145,6 +145,37 @@ export default function Projects() {
                     ))}
                   </div>
                 )}
+
+                {project.links && (
+                  <div style={{
+                    display: 'flex', gap: 10, paddingTop: 16, borderTop: '1px solid #F0F0F0', marginTop: 16
+                  }}>
+                    {project.links.live && (
+                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" style={{
+                        flex: 1, textAlign: 'center', padding: '8px 16px',
+                        background: '#E50914', color: '#fff', borderRadius: 'var(--radius-full)',
+                        fontSize: 12, fontFamily: 'var(--font-mono)', fontWeight: 600,
+                        textDecoration: 'none', letterSpacing: 1, textTransform: 'uppercase',
+                        transition: 'opacity 0.3s'
+                      }}
+                        onMouseEnter={e => e.target.style.opacity = '0.85'}
+                        onMouseLeave={e => e.target.style.opacity = '1'}
+                      >Live Demo</a>
+                    )}
+                    {project.links.github && (
+                      <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={{
+                        flex: 1, textAlign: 'center', padding: '8px 16px',
+                        background: 'transparent', color: '#555', borderRadius: 'var(--radius-full)',
+                        fontSize: 12, fontFamily: 'var(--font-mono)', fontWeight: 600,
+                        textDecoration: 'none', letterSpacing: 1, textTransform: 'uppercase',
+                        border: '1px solid #DDD', transition: 'all 0.3s'
+                      }}
+                        onMouseEnter={e => { e.target.style.borderColor = '#E50914'; e.target.style.color = '#E50914'; }}
+                        onMouseLeave={e => { e.target.style.borderColor = '#DDD'; e.target.style.color = '#555'; }}
+                      >GitHub</a>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
